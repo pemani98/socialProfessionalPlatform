@@ -77,10 +77,12 @@ app.post('/login', function (req, res) {
     console.log("user email after loop "+ req.session.email );
 
     if(sentinel === false) {
-        res.redirect("login");
+        res.redirect("/login");
+    }
+    else {
+        res.redirect(307, '/profile');
     }
     // 307 is a HTTP code making the call a POST instead of the default GET
-    res.redirect(307, '/profile');
 });
 
 // User passes through here first before going on to the surevey
@@ -125,6 +127,40 @@ app.post('/signup', function (req, res) {
     fs.writeFileSync('responses.json', JSON.stringify(jsonResponses));
     // 307 is a HTTP code making the call a POST instead of the default GET
     res.redirect('/survey');
+});
+
+
+app.post('/survey', function (req, res) {
+
+    console.log("post survey");// console.log() prints to the console
+
+    //Creates a new session for each user that logs into the system\
+    req.session.fname = req.body.fname; //fname is the "fname" of the input value on the login page
+    req.session.lname = req.body.lname;
+    req.session.email = req.body.email;
+    req.session.password = req.body.password;
+
+    req.session.questNum = 0;
+
+    let sentinel = false;
+
+    // Loop to check if the user already exists
+    for (let i = 0; i < jsonResponses.users.length; i++){
+        if (jsonResponses.users[i].email === req.session.email){
+            sentinel = (jsonResponses.users[i].password === req.session.password);
+            break;
+        }
+    }
+
+    console.log("user email after loop "+ req.session.email );
+
+    if(sentinel === false) {
+        res.redirect("/login");
+    }
+    else {
+        res.redirect(307, '/profile');
+    }
+    // 307 is a HTTP code making the call a POST instead of the default GET
 });
 
 // This is the main page for the survey
