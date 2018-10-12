@@ -124,6 +124,8 @@ app.post('/survey', function (req, res) {
 
 });
 
+
+
 // Links to login page
 app.get('/login', function (req, res) {
     res.type('html');
@@ -134,7 +136,14 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
     res.type('html');
     res.render('signup');
+
 });
+
+app.get('/survey', function (req,res) {
+    res.type('html')
+    res.render('survey')
+})
+
 
 // 404 ERROR
 app.get('/*',function(req, res){
