@@ -1,6 +1,7 @@
 # socialProfessionalPlatform
 
-Steps to running the server(whom from now on will be refered to as Anton)
+Steps to running the server (whom from now on will be refered to as Anton)
+Recommended to download Webstorm, create blank project and then inport the DellHack directory
 
 1. Install npm and node
 
