@@ -120,7 +120,7 @@ app.post('/survey', function (req, res) {
     // Pro Tip: Putting Sync at the end of writeFile makes it synchronous
     fs.writeFileSync('responses.json', JSON.stringify(jsonResponses));
 
-    res.render('home');
+    res.render('profile');
 
 });
 
