@@ -6,38 +6,49 @@
     <title >Survey Form</title>
 
 </head>
-<body >
+<body id="LoginForm">
 <div class="container">
     <div class="login-form">
-        <div class="main-div-2">
+
+        <div class="main-div">
             <div class="panel">
                 <h1>Questionnaire</h1>
             </div>
             <div>
                 <form action="#" method="post" action="/survey">
-                    <table>
-                        <tr>
-                            <td> What is your favorite technology:</td>
-                            <td><input type="text" name="Technology"/></td>
-                        </tr>
+                    <div class="servbuttons">
+                    <a>What CS area are you interested in </a>
+                    <input type="radio" name="CS" value="AI/ML"> AI/ML<br>
+                    <input type="radio" name="CS" value="Cloud Computing"> Cloud Computing<br>
+                    <input type="radio" name="CS" value="FSD"> Full Stack Development<br>
+                    <input type="radio" name="CS" value="sec"> Cybersecurity<br>
+                    <input type="radio" name="CS" value="DS"> Data Science<br>
 
-                        <tr>
-                            <td>  What University did you attend?:</td>
-                            <td><input type="text" name="University"/></td>
-                        </tr>
+                    <a>What would you rather have for dessert</a>
+                    <input type="radio" name="dessert" value="frozen"> icecream/gelato<br>
+                    <input type="radio" name="dessert" value="baked_things"> baked things<br>
+                    <input type="radio" name="dessert" value="fruit"> fruit<br>
 
-                        <tr>
-                            <td>What is organizations have you been apart of?</td>
-                            <td><input type="text" name="Organizations"/></td>
-                        </tr>
+                    <a>What is your favorite exercise</a>
+                    <input type="radio" name="dessert" value="frozen"> aerobics<br>
+                    <input type="radio" name="dessert" value="baked_things"> weight lift<br>
+                    <input type="radio" name="dessert" value="fruit"> what do you mean? I don't!<br>
 
+                    <a>What language do you have the most experience with</a>
+                    <input type="radio" name="dessert" value="frozen"> Java<br>
+                    <input type="radio" name="dessert" value="baked_things"> Python<br>
+                    <input type="radio" name="dessert" value="fruit"> C <br>
+                        
+                    </div>
 
-                    </table>
+                    <input type="submit" value="Submit">
+
                 </form>
+
 
             </div>
         </div>
-    </div></div></div>
+    </div>
 
 
 
