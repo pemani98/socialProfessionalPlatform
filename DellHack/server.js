@@ -142,14 +142,17 @@ app.post('/survey', function (req, res) {
     req.session.language = req.body.language;
 
     req.session.questNum = 0;
-
     // Loop to check if the user already exists
     for (let i = 0; i < jsonResponses.users.length; i++){
         if (jsonResponses.users[i].email === req.session.email){
-            jsonResponses.users[i].CS = req.session.CS;
-            jsonResponses.users[i].dessert = req.session.dessert;
-            jsonResponses.users[i].exercise = req.session.exercise;
-            jsonResponses.users[i].language = req.session.language;
+            jsonResponses.users[i]["fname"] = req.session.fname;
+            jsonResponses.users[i]["lname"] = req.session.lname;
+            jsonResponses.users[i]["email"] = req.session.email;
+            jsonResponses.users[i]["password"] = req.session.password;
+            jsonResponses.users[i]["CS"] = req.session.CS;
+            jsonResponses.users[i]["dessert"] = req.session.dessert;
+            jsonResponses.users[i]["exercise"] = req.session.exercise;
+            jsonResponses.users[i]["language"] = req.session.language;
             break;
         }
     }
@@ -161,7 +164,7 @@ app.post('/survey', function (req, res) {
 // This is the main page for the survey
 app.post('/profile', function (req, res) {
     let q = req.session.questNum;
-    let index = 0;
+    /*let index = 0;
 
     console.log("session name: " + req.session.userName);
 
@@ -181,7 +184,7 @@ app.post('/profile', function (req, res) {
     jsonResponses.users[index].lname = req.body.lname;
     jsonResponses.users[index].email = req.body.email;
     jsonResponses.users[index].password = req.body.password;
-
+*/
     // Pro Tip: Putting Sync at the end of writeFile makes it synchronous
     fs.writeFileSync('responses.json', JSON.stringify(jsonResponses));
 
