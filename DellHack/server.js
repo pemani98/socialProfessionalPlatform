@@ -78,10 +78,12 @@ app.post('/login', function (req, res) {
     console.log("user email after loop "+ req.session.email );
 
     if(sentinel === false) {
-        res.redirect("login");
+        res.redirect("/login");
+    }
+    else {
+        res.redirect(307, '/profile');
     }
     // 307 is a HTTP code making the call a POST instead of the default GET
-    res.redirect(307, '/profile');
 });
 
 // User passes through here first before going on to the surevey
@@ -126,6 +128,25 @@ app.post('/signup', function (req, res) {
     fs.writeFileSync('responses.json', JSON.stringify(jsonResponses));
     // 307 is a HTTP code making the call a POST instead of the default GET
     res.redirect('/survey');
+});
+
+
+app.post('/survey', function (req, res) {
+
+    console.log("post survey");// console.log() prints to the console
+
+    //Creates a new session for each user that logs into the system\
+    req.session.CS = req.body.CS; //fname is the "fname" of the input value on the login page
+    req.session.dessert = req.body.dessert;
+    req.session.exercise = req.body.exercise;
+    req.session.language = req.body.language;
+
+    req.session.questNum = 0;
+
+    console.log("user email after loop "+ req.session.email );
+
+    res.redirect(307, '/profile');
+    // 307 is a HTTP code making the call a POST instead of the default GET
 });
 
 // This is the main page for the survey
