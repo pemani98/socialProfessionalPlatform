@@ -136,31 +136,16 @@ app.post('/survey', function (req, res) {
     console.log("post survey");// console.log() prints to the console
 
     //Creates a new session for each user that logs into the system\
-    req.session.fname = req.body.fname; //fname is the "fname" of the input value on the login page
-    req.session.lname = req.body.lname;
-    req.session.email = req.body.email;
-    req.session.password = req.body.password;
+    req.session.CS = req.body.CS; //fname is the "fname" of the input value on the login page
+    req.session.dessert = req.body.dessert;
+    req.session.exercise = req.body.exercise;
+    req.session.language = req.body.language;
 
     req.session.questNum = 0;
 
-    let sentinel = false;
-
-    // Loop to check if the user already exists
-    for (let i = 0; i < jsonResponses.users.length; i++){
-        if (jsonResponses.users[i].email === req.session.email){
-            sentinel = (jsonResponses.users[i].password === req.session.password);
-            break;
-        }
-    }
-
     console.log("user email after loop "+ req.session.email );
 
-    if(sentinel === false) {
-        res.redirect("/login");
-    }
-    else {
-        res.redirect(307, '/profile');
-    }
+    res.redirect(307, '/profile');
     // 307 is a HTTP code making the call a POST instead of the default GET
 });
 
