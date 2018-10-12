@@ -63,6 +63,7 @@ app.post('/login', function (req, res) {
     req.session.password = req.body.password;
 
     req.session.questNum = 0;
+    req.session.icecream = req.body.icecream;
 
     let sentinel = false;
 
