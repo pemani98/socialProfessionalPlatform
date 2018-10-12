@@ -50,9 +50,42 @@ app.get('/', function (req, res) {
     res.render('welcome_portal'); // You only need to write the name of the file and not its extension. Searches . first
 });
 
-// User passes through here first before going on to the surevey
+// User passes through here first before going on to the survey
 // This is part of the MIDDLEWARE
 app.post('/login', function (req, res) {
+
+    console.log("login");// console.log() prints to the console
+
+    //Creates a new session for each user that logs into the system\
+    req.session.fname = req.body.fname; //fname is the "fname" of the input value on the login page
+    req.session.lname = req.body.lname;
+    req.session.email = req.body.email;
+    req.session.password = req.body.password;
+
+    req.session.questNum = 0;
+
+    let sentinel = false;
+
+    // Loop to check if the user already exists
+    for (let i = 0; i < jsonResponses.users.length; i++){
+        if (jsonResponses.users[i].email === req.session.email){
+            sentinel = true;
+            break;
+        }
+    }
+
+    console.log("user email after loop "+ req.session.email );
+
+    if(sentinel === false) {
+        res.redirect("login");
+    }
+    // 307 is a HTTP code making the call a POST instead of the default GET
+    res.redirect(307, '/survey');
+});
+
+// User passes through here first before going on to the surevey
+// This is part of the MIDDLEWARE
+app.post('/signup', function (req, res) {
 
     console.log("login");// console.log() prints to the console
 
