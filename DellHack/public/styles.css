@@ -12,6 +12,13 @@ body#LoginForm{ background-image:url("blur-background.jpg"); background-repeat:n
     width: 70%;
     line-height: 30px;
 }
+.main-div-2 {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 15%;
+    padding: 50px 70px 70px 70px;
+}
 .main-div {
     background: #ffffff none repeat scroll 0 0;
     border-radius: 2px;
