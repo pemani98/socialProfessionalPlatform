@@ -47,7 +47,7 @@ app.get('/', function (req, res) {
         'Content-Type': 'text/html',
         'Set-Cookie': 'now='+Date.now()
     });
-    res.render('login'); // You only need to write the name of the file and not its extension. Searches . first
+    res.render('welcome_portal'); // You only need to write the name of the file and not its extension. Searches . first
 });
 
 // User passes through here first before going on to the surevey
