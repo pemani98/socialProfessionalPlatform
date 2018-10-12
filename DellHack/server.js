@@ -127,7 +127,7 @@ app.post('/signup', function (req, res) {
 });
 
 // This is the main page for the survey
-app.post('/survey', function (req, res) {
+app.post('/profile', function (req, res) {
     let q = req.session.questNum;
     let index = 0;
 
@@ -157,6 +157,42 @@ app.post('/survey', function (req, res) {
 
 });
 
+app.get('/profile', function (req, res) {
+    let q = req.session.questNum;
+    let index = 0;
+
+    console.log("session name: " + req.session.userName);
+
+    // Reads through the json file to get the right user.
+    // This is another check in case more than one users are using the server at once
+    for (let i = 0; i < jsonResponses.users.length; i++){
+        if (jsonResponses.users[i].email === req.session.email){
+            console.log("user email here "+ req.session.email );
+            index = i;
+            break;
+        }
+    }
+
+    console.log("index " + index);
+
+    jsonResponses.users[index].fname = req.body.fname;
+    jsonResponses.users[index].lname = req.body.lname;
+    jsonResponses.users[index].email = req.body.email;
+    jsonResponses.users[index].password = req.body.password;
+
+    // Pro Tip: Putting Sync at the end of writeFile makes it synchronous
+    fs.writeFileSync('responses.json', JSON.stringify(jsonResponses));
+
+    res.render('profile');
+
+});
+
+
+// Links to login page
+app.post('/registered', function (req, res) {
+    res.type('html');
+    res.redirect(307, '/profile');
+});
 
 
 // Links to login page
