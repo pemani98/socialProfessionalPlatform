@@ -1,0 +1,19 @@
+What are we building?
+	Platform to publically showcase skills and talents
+	Scheduling for IRL training events
+	Private messaging
+
+
+Questionnaire:
+	What are you skills?
+
+	What experiences do you have using your skills?
+
+	What can you offer as a mentor?
+
+	What opportunities are you looking for?
+
+	Personal Connections:
+	-Favorite genre of music?
+	-Favorite TV show?
+	-List of hobbies?

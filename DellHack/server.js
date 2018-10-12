@@ -124,10 +124,21 @@ app.post('/survey', function (req, res) {
 
 });
 
+// Links to login page
+app.get('/login', function (req, res) {
+    res.type('html');
+    res.render('login');
+});
+
+// Links to sign up page
+app.get('/signup', function (req, res) {
+    res.type('html');
+    res.render('signup');
+});
 
 // 404 ERROR
 app.get('/*',function(req, res){
-    var response =  "<html><head></head><body><p> 404 Error</p></body></html>";
+    var response =  "<html><head></head><body><p> 404 Error test</p></body></html>";
     res.type('html');
     res.end(response);
 });
