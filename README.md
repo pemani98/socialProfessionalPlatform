@@ -11,7 +11,7 @@ You can get them all at once if you chose by just typing in: npm install
 
 2. Run npm install from the terminal where you will be running your program.
 
-3. run: $ node app.js
+3. run: $ node server.js
 
 4. Open up a web browser and go to http://localhost:8000
 
